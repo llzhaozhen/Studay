@@ -100,5 +100,44 @@
             document.getElementById('q1')
           );
        </script>
-  </body>
-</html>
+
+
+       <!-- 表单，属于用户跟组件的互动，所以不能用this.props-->
+       <div id="q2"></div>
+       <script type="text/babel">
+        var Hello = React.createClass({
+          getInitialState: function () {
+            return {
+              opacity: 1.0
+            };
+          },
+
+          componentDidMount: function () {
+            this.timer = setInterval(function () {
+              var opacity = this.state.opacity;
+              opacity -= .05;
+              if (opacity < 0.1) {
+                opacity = 1.0;
+              }
+              this.setState({
+                opacity: opacity
+              });
+            }.bind(this), 1);
+          },
+
+          render: function () {
+            return (
+              <div style={{opacity: this.state.opacity}}>
+                Hello {this.props.name}
+              </div>
+            );
+          }
+        });
+
+        ReactDOM.render(
+          <Hello name="world"/>,
+          document.getElementById('q2')
+        );
+      </script>
+    </body>
+  </html>
