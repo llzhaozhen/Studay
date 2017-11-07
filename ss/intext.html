@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+      );
+    </script>
+
+
+
+    <div id="example"></div>
+       <script type="text/babel">
+         var HelloMessage = React.createClass({
+           render: function() {
+             return <h1>Hello {this.props.name}</h1>;
+           }
+         });
+
+         ReactDOM.render(
+           <HelloMessage name="John" />,
+           document.getElementById('example')
+         );
+       </script>
+
+
+
+       <div id="d1"></div>
+       <script type="text/babel">
+
+       var names=['1','2','3','4','5'];
+       ReactDOM.render(
+         <div>
+             {names.map(function(name){
+               return <div>你好！{name}！</div>
+         })}
+         </div>,
+         document.getElementById('d1')
+       );
+       </script>
+
+
+
+
+       <div id="d5"></div>
+       <script type="text/babel">
+         var arr=[
+           <h1 key="1">努力！</h1>,
+           <h2 key="2">工作！</h2>
+         ];
+         ReactDOM.render(
+           <div>{arr}</div>,
+           document.getElementById('d5')
+         );
+
+       </script>
+
+
+
+       <div id="a1"></div>
+       <script type="text/babel">
+          var nn=[
+            <h2 key="1">a</h2>,
+            <h2 key="2">b</h2>,
+            <h2 key="3">c</h2>
+
+          ];
+          ReactDOM.render(
+            <div>
+                {nn.map(function(name){
+                  return <div>你好！{name}！</div>
+            })}
+            </div>,
+            document.getElementById('a1')
+          );
+
+       </script>
+
+  </body>
+</html>

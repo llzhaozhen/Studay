@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+    <body>
+
+      <div id="example"></div>
+ <script type="text/babel">
+   var NotesList = React.createClass({
+     render: function() {
+       return (
+         <ol>
+           {
+             React.Children.map(this.props.children, function (child) {
+               return <li>{child}</li>;
+             })
+           }
+         </ol>
+       );
+     }
+   });
+   ReactDOM.render(
+     <NotesList>
+       <span>hello</span>
+       <span>world</span>
+     </NotesList>,
+     document.getElementById('example')
+   );
+ </script>
+
+      <div id="q1"></div>
+      <script type="text/babel">
+          var NoteList=React.createClass({
+            render:function(){
+              return(
+                <ol>
+                  {
+                    React.Children.map(this.props.children,function(child){
+                      return <li>{child}</li>
+                    })
+                  }
+                </ol>
+              );
+            }
+          });
+          ReactDOM.render(
+            <NoteList>
+                <span>a</span>
+                <span>b</span>
+                <span>c</span>
+            </NoteList>,
+            document.getElementById('q1')
+          );
+      </script>
+
+
+
+      <!--PropTypes属性，就是用来验证组件实力的属性是否符合要求  -->
+
+      <div id="q2"></div>
+      <script type="text/babel">
+        var data =123;
+
+        var MyTitle=React.createClass({
+          propTypes:{
+            title:React.PropTypes.isRequired,
+          },
+          render:function(){
+            return <h3>{this.props.title}</h3>
+          }
+        });
+        ReactDOM.render(
+          <MyTitle  title={data} />,
+          document.getElementById('q2')
+        );
+      </script>
+      <div id="q2"></div>
+      <script type="text/babel">
+        var MyComponent=React.createClass({
+          handleClick:function(){
+            this.refs.myText.focus();
+          },
+          render:function(){
+            return(
+              <div>
+                <input type="text" ref="myText" />
+                 <input type="button" value="Focus the text input" onClick={this.handleClick} />
+              </div>
+            );
+          }
+        });
+        ReactDOM.render(
+            <MyComponent />,
+              document.getElementById('q2')
+            );
+      </script>
+
+
+    </body>
+  </html>
