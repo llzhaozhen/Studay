@@ -142,5 +142,41 @@
           document.getElementById('q2')
         );
       </script>
+
+      <!-- 通过多个组件合成有个组件 -->
+
+      <div id="q3"></div>
+      <script type="text/babel">
+        var WebSite=React.createClass({
+          render:function(){
+            return(
+              <div>
+                  <Name name={this.props.name} />
+                  <Link site={this.props.site} />
+              </div>
+            );
+          }
+        });
+        var Name=React.createClass({
+          render:function(){
+            return(
+              <h1>{this.props.name}</h1>
+            );
+          }
+        });
+        var Link=React.createClass({
+          render:function(){
+            return(
+              <a href={this.props.site}>
+                {this.props.site}
+              </a>
+            );
+          }
+        });
+        ReactDOM.render(
+          <WebSite name="React" site="http://www.ruanyifeng.com/blog/2015/03/react.html" />,
+          document.getElementById('q3')
+        );
+      </script>
     </body>
   </html>
