@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="" method="get" name="a1">
+        id:<input type="text" name="id" /><br>
+        name:<input type="text" name="name" /><br>
+        email:<input type="text" name="email" /><br>
+        title:<input type="text" name="title" />
+            <input type="button" value="增加" type="submit" onclick="a1.action='/add';a1.submit();" />
+            <input type="button" value="删除" type="submit" onclick="a1.action='/delete';a1.submit();" />
+            <input type="button" value="修改" type="submit" onclick="a1.action='/updatesql';a1.submit();" />
+            <input type="button" value="查询" type="submit" onclick="a1.action='/search';a1.submit();" />
+    </form>
+  </body>
+</html>

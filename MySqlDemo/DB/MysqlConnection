@@ -1,0 +1,6 @@
+create table ExpressDB (
+    id int(10),
+    name varchar(5),
+    email varchar(11),
+    title varchar(500)
+);
