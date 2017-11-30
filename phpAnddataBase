@@ -1,0 +1,105 @@
+<?php 
+	$servername="localhost";
+	$username="root";
+	$password="140701";
+	$dbname="myDB";
+
+	$conn=new mysqli($servername,$username,$password,$dbname);
+
+	if ($conn->connect_error) {
+		die("连接失败" . $conn->connect_error);
+	}
+
+	// $sql="CREATE TABLE MyGuests (
+	// 	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	// 	firstname VARCHAR(30) NOT NULL,
+	// 	lastname VARCHAR(30) NOT NULL,
+	// 	email VARCHAR(50),
+	// 	reg_date TIMESTAMP
+	// 	)";
+	// $sql="INSERT INTO MyGuests (firstname, lastname, email)
+	// 		VALUES ('John', 'Doe', 'john@example.com')";
+	// if ($conn->query($sql)==TRUE) {
+	// 	echo("数据创建成功");
+	// }else{
+	// 	echo("Error creating database" . $conn->error);
+	// }
+
+	//预处理及绑定
+
+	// $stmt=$conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?,?,?)");
+
+	// $stmt->bind_param("sss",$firstname,$lastname,$email);
+
+	// // 设置参数并执行
+	// $firstname="Mary";
+	// $lastname="Moe";
+	// $email="mary@example.com";
+	// $stmt->execute();
+
+
+	// $firstname="mark";
+	// $lastname="bob";
+	// $email="mark@example.com";
+	// $stmt->execute();
+
+	// echo("新记录插入成功了");
+
+	// $stmt->close();
+	// $conn->close();
+
+
+	/**
+	** 读取数据库中的数据
+	**/
+
+	$sql="SELECT id,firstname,lastname,reg_date FROM MyGuests";
+	$result=$conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		//输出 数据
+
+		while ($row=$result->fetch_assoc()) {
+			echo "id:" . $row["id"] . " -name:" . $row["firstname"] . " " . $row["lastname"] . " 日期：" . $row["reg_date"] . "<br>" ;
+		}
+	}else{
+		echo "0结果";
+	}
+	$conn->close();
+ ?>
+ <?php 
+ 	$servername="localhost";
+ 	$username="root";
+ 	$password="140701";
+ 	$dbname="myDB";
+
+ 	$conn=new mysqli($servername,$username,$password,$dbname);
+
+ 	if ($conn->connect_error) {
+ 		die("连接失败". $conn->connect_error);
+ 	}
+
+ 	$stmt=$conn->prepare("SELECT id,firstname,lastname FROM MyGuests WHERE id=?");
+
+ 	$stmt->bind_param('i',$id);
+
+ 	$id = 2;
+
+ 	$stmt->execute();
+
+ 	$stmt->store_result();
+
+ 	$stmt->bind_result($id,$firstname,$lastname);
+
+
+ 	if ($stmt->num_rows > 0) {
+ 	
+ 		while ($stmt->fetch()) {
+ 			  // printf("$id,$firstname,$lastname<br/>");
+ 			echo("id:" . "$id  " . " name: " . "$firstname " . " " . "lastname");
+ 		}
+ 		$stmt->close();
+	}
+
+	$conn->close();
+  ?>
